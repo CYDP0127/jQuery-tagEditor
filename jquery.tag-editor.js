@@ -315,12 +315,8 @@
                     // trigger blur if maxTags limit is reached
                     if (o.maxTags && ed.data('tags').length >= o.maxTags) ed.find('input').blur();
 
-
-                    if(o.enterToSubmit){
-                        if($(this).value == null && ed.children().length > 2){
-                            var response = ed.data('tags');
-                            o.onSubmit(response).submit();
-                        }
+                    if($(this).value == null && ed.children().length > 2){
+                        o.onEnter(ed.data('tags'));
                     }
 
                     return false;
@@ -369,12 +365,11 @@
         animateDelete: 175,
         sortable: true, // jQuery UI sortable
         autocomplete: null, // options dict for jQuery UI autocomplete
-        enterToSubmit:false,
 
         // callbacks
         onChange: function(){},
         beforeTagSave: function(){},
         beforeTagDelete: function(){},
-        onSubmit: function(){}
+        onEnter: function(){}
     };
 }(jQuery));
