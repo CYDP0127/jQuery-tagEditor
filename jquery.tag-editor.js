@@ -315,12 +315,11 @@
                     // trigger blur if maxTags limit is reached
                     if (o.maxTags && ed.data('tags').length >= o.maxTags) ed.find('input').blur();
 
-                    if(o.enterToSubmit){
 
+                    if(o.enterToSubmit){
                         if($(this).value == null && ed.children().length > 2){
-                            var response = [];
-                            response.push({field: el[0], editor: ed, tags: ed.data('tags')});
-                            o.onSubmit(response);
+                            var response = ed.data('tags');
+                            o.onSubmit(response).submit();
                         }
                     }
 
